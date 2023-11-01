@@ -11,12 +11,18 @@ def random_predict(number:int=1) -> int:
     """
 
     count = 0
-
+    left=1 # првое число
+    right=100 # последнее число
     while True:
         count += 1
-        predict_number = np.random.randint(1, 101) # предполагаемое число
-        if number == predict_number:
-            break # выход из цикла, если угадали
+        predict_number =(left+right)//2  # середина диопазона
+        if number==predict_number:
+            break          # выход из цикла, если угадали
+        elif number>predict_number: #если число больше предполагаемеого
+            left=predict_number+1 # увеличеваем его 
+        else:
+            right=predict_number-1 # иначе, уменьшаем, сужая диопазон
+            
     return(count)
 
 print(f'Количество попыток: {random_predict()}')
